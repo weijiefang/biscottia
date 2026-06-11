@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>BISCOTTIA 比斯可蒂雅 | 精品手工餅乾</title>
+    <!-- Google Fonts 優雅字體 -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (免費圖示庫) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #fef9f2;   /* 暖白基底 */
+            color: #2c2b28;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, .logo, .nav-links a, .hero-title, .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* 導覽列 */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 32px;
+            background: rgba(254, 249, 242, 0.96);
+            backdrop-filter: blur(6px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: #a77c5b;
+        }
+        .logo span {
+            font-size: 0.9rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            color: #b89a7a;
+            display: block;
+            line-height: 1.2;
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 400;
+            color: #3a2c23;
+            transition: 0.2s;
+            letter-spacing: 1px;
+        }
+        .nav-links a:hover {
+            color: #c29a6b;
+        }
+        /* 行動版選單簡單收折 */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 16px;
+                padding: 16px;
+            }
+            .nav-links {
+                gap: 24px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .container {
+                padding: 0 20px;
+            }
+        }
+
+        /* Hero 主視覺 */
+        .hero {
+            text-align: center;
+            padding: 100px 20px 120px;
+            background: linear-gradient(145deg, #f5ede3 0%, #fef9f2 100%);
+        }
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 500;
+            color: #916e4b;
+            margin-bottom: 16px;
+        }
+        .hero-sub {
+            font-size: 1rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #ad8b6c;
+            margin-bottom: 24px;
+        }
+        .hero-desc {
+            max-width: 600px;
+            margin: 0 auto 40px;
+            font-size: 1rem;
+            font-weight: 300;
+            color: #5e4b38;
+        }
+        .btn-gold {
+            display: inline-block;
+            background: transparent;
+            border: 1.5px solid #c6a27a;
+            padding: 12px 32px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            color: #916e4b;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .btn-gold:hover {
+            background: #c6a27a;
+            color: #fff;
+        }
+
+        /* 通用章節標題 */
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 500;
+            color: #8e6a48;
+            margin: 80px 0 20px;
+        }
+        .section-sub {
+            text-align: center;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            color: #b29a7e;
+            margin-bottom: 48px;
+        }
+
+        /* 產品卡片區 */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 48px;
+            margin: 40px 0 60px;
+        }
+        .product-card {
+            text-align: center;
+            background: #ffffffd9;
+            padding: 32px 20px;
+            border-radius: 2px;
+            transition: transform 0.25s ease, box-shadow 0.3s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            border: 1px solid #f0e2d4;
+        }
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.08);
+            border-color: #e2cfbc;
+        }
+        .product-img {
+            width: 160px;
+            height: 160px;
+            background: #f7ede4;
+            border-radius: 50%;
+            margin: 0 auto 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            color: #c3a07e;
+        }
+        /* 建議使用者換成真實產品照片，此處用圖示佔位 */
+        .product-img i {
+            font-size: 4rem;
+        }
+        .product-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: #5a3e2a;
+        }
+        .product-desc {
+            font-size: 0.85rem;
+            color: #7f6956;
+            margin: 16px 0;
+            padding: 0 8px;
+        }
+        .price {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: #b68b60;
+            letter-spacing: 0;
+            margin: 12px 0;
+        }
+        .shop-link {
+            display: inline-block;
+            margin-top: 12px;
+            font-size: 0.8rem;
+            text-decoration: none;
+            color: #aa7a53;
+            border-bottom: 1px solid #dccbbd;
+            padding-bottom: 2px;
+            transition: 0.2s;
+        }
+        .shop-link:hover {
+            color: #7b573b;
+            border-bottom-color: #7b573b;
+        }
+
+        /* 品牌故事區塊 */
+        .story {
+            background: #fcf6ef;
+            margin: 80px 0;
+            padding: 60px 0;
+        }
+        .story-inner {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 48px;
+            align-items: center;
+        }
+        .story-text {
+            flex: 1;
+        }
+        .story-text h3 {
+            font-size: 2rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+            color: #896e51;
+        }
+        .story-text p {
+            color: #5f4b38;
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+        .story-quote {
+            font-style: italic;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            border-left: 3px solid #ccb38c;
+            padding-left: 20px;
+        }
+        .story-img {
+            flex: 1;
+            background: #e7d9ce;
+            height: 320px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: #b59778;
+        }
+        @media (max-width: 800px) {
+            .story-inner { flex-direction: column; }
+            .hero-title { font-size: 2.8rem; }
+        }
+
+        /* 頁尾 */
+        footer {
+            background: #e7dbcf;
+            padding: 48px 32px 24px;
+            text-align: center;
+            color: #5b4735;
+            margin-top: 60px;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-bottom: 32px;
+        }
+        .footer-links a {
+            text-decoration: none;
+            color: #8a684b;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+        .social-icons i {
+            font-size: 1.2rem;
+            margin: 0 10px;
+            color: #9f7c5d;
+            transition: 0.2s;
+        }
+        .copyright {
+            font-size: 0.7rem;
+            margin-top: 28px;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            BISCOTTIA<br><span>比斯可蒂雅</span>
+        </div>
+        <div class="nav-links">
+            <a href="#products">精品餅乾</a>
+            <a href="#story">品牌故事</a>
+            <a href="#contact">鑑賞專區</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-title">手工雪Ｑ餅 · 牛軋餅</div>
+        <div class="hero-sub">Artisanal Biscotti · 獻給味蕾的義式優雅</div>
+        <div class="hero-desc">源自義式傳統烘焙工藝，選用頂級發酵奶油與海藻糖，<br>每一口都嚐得到柔韌與酥脆的完美平衡。</div>
+        <a href="https://shopee.tw/shop/15325517" target="_blank" class="btn-gold">選購精品獻禮 →</a>
+    </section>
+
+    <div class="container" id="products">
+        <h2 class="section-title">精選系列</h2>
+        <div class="section-sub">Collection</div>
+        <div class="product-grid">
+            <!-- 手工雪Q餅 原味 -->
+            <div class="product-card">
+                <div class="product-img"><i class="fas fa-cookie-bite"></i></div>
+                <h3 class="product-title">手工雪Ｑ餅 · 原味</h3>
+                <div class="product-desc">純白棉花糖與天然蔓越莓乾，軟Ｑ不黏牙，入口淡淡奶香。</div>
+                <div class="price">精品獻禮 | 單包 NT$150</div>
+                <a href="https://shopee.tw/shop/15325517" target="_blank" class="shop-link">至蝦皮選購 →</a>
+            </div>
+            <!-- 手工牛軋餅 原味 -->
+            <div class="product-card">
+                <div class="product-img"><i class="fas fa-candy-cane"></i></div>
+                <h3 class="product-title">手工牛軋餅 · 原味</h3>
+                <div class="product-desc">酥脆蘇打餅夾入濃郁牛軋，甜而不膩，經典午茶首選。</div>
+                <div class="price">精品獻禮 | 單包 NT$150</div>
+                <a href="https://shopee.tw/shop/15325517" target="_blank" class="shop-link">至蝦皮選購 →</a>
+            </div>
+            <!-- 精品綜合禮盒 (未來拓展) -->
+            <div class="product-card">
+                <div class="product-img"><i class="fas fa-gift"></i></div>
+                <h3 class="product-title">臻藏禮盒</h3>
+                <div class="product-desc">雙口味拼配，附緞帶提盒，企業送禮、婚禮小物首選。</div>
+                <div class="price">客製詢價 | 歡迎預訂</div>
+                <a href="https://shopee.tw/shop/15325517" target="_blank" class="shop-link">聯絡我們 →</a>
+            </div>
+        </div>
+    </div>
+
+    <section class="story" id="story">
+        <div class="container story-inner">
+            <div class="story-text">
+                <h3>BISCOTTIA 的靈感</h3>
+                <p>「BISCOTTIA」源自義大利文「Biscotti」—— 歷經兩次烘烤的脆餅，象徵對細節的堅持與永恆的風味。我們將這份義式職人精神帶入手工雪Ｑ餅與牛軋餅，嚴選天然食材，減糖配方，讓每一口都吃得優雅無負擔。</p>
+                <p>從家庭廚房到精品櫃位，我們希望以細膩口感與質感包裝，重新定義台式伴手禮，成為你生活中最溫柔的甜點記憶。</p>
+                <div class="story-quote">— 手工慢製，獻給懂得品味的你 —</div>
+            </div>
+            <div class="story-img">
+                <i class="fas fa-leaf"></i> 自然·純粹
+            </div>
+        </div>
+    </section>
+
+    <div class="container" id="contact">
+        <h2 class="section-title">鑑賞專區</h2>
+        <div class="section-sub">Follow & Inquire</div>
+        <div style="text-align: center; margin: 40px 0;">
+            <p style="margin-bottom: 28px;">最新口味、期間限定禮盒，歡迎關注官方社群<br>或直接至蝦皮賣場選購。</p>
+            <div style="display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;">
+                <a href="https://shopee.tw/shop/15325517" target="_blank" class="btn-gold" style="background:#fff4eb;"><i class="fab fa-shopify"></i> 蝦皮賣場</a>
+                <a href="#" class="btn-gold" style="background:#fff4eb;"><i class="fab fa-instagram"></i> Instagram (籌備中)</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#">關於我們</a>
+            <a href="#">隱私權政策</a>
+            <a href="#">客服信箱</a>
+            <a href="#">合作提案</a>
+        </div>
+        <div class="social-icons">
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-facebook-f"></i>
+            <i class="fab fa-line"></i>
+        </div>
+        <div class="copyright">
+            © 2025 BISCOTTIA 比斯可蒂雅 | 手工甜點 精品呈現 保留所有權利
+        </div>
+    </footer>
+
+    <!-- 簡單的平滑滾動 -->
+    <script>
+        document.querySelectorAll('.nav-links a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const target = document.getElementById(targetId);
+                if(target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
